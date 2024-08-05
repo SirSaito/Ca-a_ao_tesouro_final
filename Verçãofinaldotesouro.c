@@ -31,11 +31,11 @@ void mensagem_pista1(void);
 void mensagem_pista2(void);
 void De_novo(void);
 
-int x, y, n, t;
+int x, y, n, t, q, i, j, k;
 int X, Y;
-char denovo;
+char denovo, c;
 float diff;
-char n;
+int n;
 int Tempo = 0;
 int num_jog = 0;
 int armadilhas = 0;
@@ -66,22 +66,19 @@ int main(){ //Int Main;
     return 0;   
 }
 
-void regras(void){
-    printf("\t As jogadas devem ser intercalas entre os jogadores (são 36 jogadas possíveis, um múltiplo perfeito
-para que 2, 3 ou 4 jogadores tenham 18, 12 ou 9 jogadas, respectivamente).
-● Em cada quadro da mina, pode existir um diamante com um número aleatório de quilates.
-● Na mina, existem armadilhas e pistas. Distribua aleatoriamente pistas (em 5% dos quadros) e dois
-tipos diferentes de armadilha (10% dos quadros), como por exemplo:
-○ Túneis sem saída (identificados por ‘O’): ao sair do túnel, o jogador perde 5 ou 10 de seus
-diamantes;
-○ Esconderijo secreto (identificados por ‘-’): o jogador fica invisível e desconta 5 quilates do(s)
-oponente(s);
-○ Prossiga (identificados por ‘+’): como o jogador está no caminho certo, seus quilates são
-acrescidos em 3 pontos.
-● Cada vez que um quadro é escolhido, ele deve ser assinalado conforme a identificação do jogador e,
-se for o caso, da armadilha ou da pista.
-\n");
-escolha();
+void regras(void) {
+    printf("\t As jogadas devem ser intercaladas entre os jogadores. São 36 jogadas possíveis, um múltiplo perfeito\n");
+    printf("para que 2, 3 ou 4 jogadores tenham 18, 12 ou 9 jogadas, respectivamente.\n");
+    printf("Em cada quadro da mina, pode existir um diamante com um número aleatório de quilates.\n");
+    printf("Na mina, existem armadilhas e pistas. Distribua aleatoriamente pistas (em 5% dos quadros) e dois\n");
+    printf("tipos diferentes de armadilha (10% dos quadros), como por exemplo:\n");
+    printf("○ Túneis sem saída (identificados por O): ao sair do túnel, o jogador perde 5 ou 10 de seus diamantes;\n");
+    printf("○ Esconderijo secreto (identificados por -): o jogador fica invisível e desconta 5 quilates do(s)\n");
+    printf("oponente(s);\n");
+    printf("○ Prossiga (identificados por +): como o jogador está no caminho certo, seus quilates são acrescidos em 3 pontos.\n");
+    printf("Cada vez que um quadro é escolhido, ele deve ser assinalado conforme a identificação do jogador e,\n");
+    printf("se for o caso, da armadilha ou da pista.\n");
+    escolha();
 }
 
 void escolha(void){ 
@@ -104,32 +101,29 @@ void escolha(void){
     }
 }
 
-void nome(void){
-    printf("\tDigite o nome do player 01\n");
+void nome(void) {
+    printf("\tDigite o nome do jogador 01: ");
     fflush(stdin);
-    scanf("%s", &nome1);
-    printf("\tDigite o nome do player 02\n");
+    scanf("%c", &nome1);
+    printf("\tDigite o nome do jogador 02: ");
     fflush(stdin);
-    scanf("%s", &nome2);
-    if (n==2){
+    scanf("%c", &nome2);
+    if (n == 2) {
+        dificuldade();
+    } else if (n == 3) {
+        printf("\tDigite o nome do jogador 03: ");
+        fflush(stdin);
+        scanf("%c", &nome3);
+        dificuldade();
+    } else if (n == 4) {
+        printf("\tDigite o nome do jogador 03: ");
+        fflush(stdin);
+        scanf("%c", &nome3);
+        printf("\tDigite o nome do jogador 04: ");
+        fflush(stdin);
+        scanf("%c", &nome4);
         dificuldade();
     }
-    if (n==3){
-        printf("\tDigite o nome do player 03\n");
-        fflush(stdin);
-        scanf("%s", &nome3);
-        dificuldade();
-    }
-    if (n==4){
-        printf("\tDigite o nome do player 03\n");
-        fflush(stdin);
-        scanf("%s", &nome3);
-        printf("\tDigite o nome do player 04\n");
-        fflush(stdin);
-        scanf("%s", &nome4);
-        dificuldade();
-    }
-
 }
 
 void dificuldade(void){
@@ -137,24 +131,24 @@ void dificuldade(void){
     printf("\tNivel medio: 81 quadros, taxa de 80% de diamantes e 10% de minas e 10% de pistas, possui um timer\n");
     printf("\tNivel dificil: 144 quadros, taxa de 70% de diamantes e 20% de minas e 10% de pistas, possui um timer\n")
     printf("\t\tEscolha o nivel de dificuldade, 1 para facil, 2 para medio e 3 para dificil: \n");
-    scanf("%d", &);
+    scanf("%c", &c);
      switch(c){
         case 1:printf("\t\tSELECIONADO: Nivel Facil.\n");
         printf("\tVocês são exploradores que infelizmente ficaram presos em uma caverna, coletem o maximo de pontos para escapar \n");
-        tempo=1000;
-        easy(); //Mapa no modo facil;
+        Tempo=1000;
+        facil(); //Mapa no modo facil;
         break; 
         case 2:printf("\t\tSELECIONADO: Nivel Medio.\n");
         printf("\tVocês são exploradores que infelizmente ficaram presos em uma caverna, coletem o maximo de pontos para escapar \n");
         printf("\tA caverna parece estar desmoronando atinjam o numero maximo de pontos antes que desmorone \n");
-        tempo=25;
+        Tempo=25;
         medio(); //Mapa no modo medio;
         break;
         case 3:printf("\t\tSELECIONADO: Nivel Dificil.\n");
         printf("\tVocês são exploradores que infelizmente ficaram presos em uma caverna, coletem o maximo de pontos para escapar \n");
         printf("\tA caverna parece estar desmoronando atinjam o numero maximo de pontos antes que desmorone \n");
-        tempo=70;
-        hard(); //Mapa no modo dificil;
+        Tempo=70;
+        dificil(); //Mapa no modo dificil;
         break;
         default:printf("\t\tVALOR INVALIDO\n");break;
     }
@@ -196,14 +190,14 @@ void ordem(void){
     if(num_jog=2){
         
         if (t==0){
-        printf("Vez do jogador: %s" nome1);
+        printf("Vez do jogador: %c" nome1);
         t=1;
         posicao();
         }
         if(t==2){
         t++;
         if (t==2){
-        printf("Vez do jogador: %s" nome2);
+        printf("Vez do jogador: %c" nome2);
         t=2;
         posicao();
         }
@@ -211,17 +205,17 @@ void ordem(void){
     }
     if(num_jog=3){
         if (t!=1){
-        printf("Vez do jogador: %s" nome1);
+        printf("Vez do jogador: %c" nome1);
         t=1;
         posicao();
         }
         if (t!=2){
-        printf("Vez do jogador: %s" nome2);
+        printf("Vez do jogador: %c" nome2);
         t=2;
         posicao();
         }
         if (t!=3){
-        printf("Vez do jogador: %s" nome3);
+        printf("Vez do jogador: %c" nome3);
         t=3;
         posicao();
         }
@@ -230,22 +224,22 @@ void ordem(void){
     }
     if(num_jog=4){
         if (t!=1){
-        printf("Vez do jogador: %s" nome1);
+        printf("Vez do jogador: %c" nome1);
         t=1;
         posicao();
         }
         if (t!=2){
-        printf("Vez do jogador: %s" nome2);
+        printf("Vez do jogador: %c" nome2);
         t=2;
         posicao();
         }
         if (t!=3){
-        printf("Vez do jogador: %s" nome3);
+        printf("Vez do jogador: %c" nome3);
         t=3;
         posicao();
         }
         if (t!=4){
-        printf("Vez do jogador: %s" nome4);
+        printf("Vez do jogador: %c" nome4);
         t=4;
         posicao();
         }
@@ -494,7 +488,7 @@ void grid(void){
     {
         i = rand()%(X);
         j = rand()%(Y);
-        if( [i][j] != '+')                         
+        if( Mina[i][j] != '+')                         
         {
             Mina[i][j] = '+';
             Mina_result[i][j] = Mina[i][j];
@@ -509,7 +503,7 @@ void grid(void){
     {
         i = rand()%(X);
         j = rand()%(Y);
-        if( [i][j] != '-')                         
+        if( Mina[i][j] != '-')                         
         {
             Mina[i][j] = '-';
             Mina_result[i][j] = Mina[i][j];
@@ -524,7 +518,7 @@ void grid(void){
     {
         i = rand()%(X);
         j = rand()%(Y);
-        if( [i][j] != '9')                         
+        if( Mina[i][j] != '9')                         
         {
             Mina[i][j] = '9';
             Mina_result[i][j] = Mina[i][j];
@@ -778,28 +772,27 @@ void grid(void){
 
 void posicao (void){
     int q = 0, i=0, j=0, partida=0;
-    grid2;
+    grid2();
     while( j < X )                                          
     {
         while( i < Y )
         {
             if(Mina[i][j] == Mina_vazia[i][j])
             {
-                match++;
+                k++;
             }
             i++;
         }
         i = 0;
         j++;
     }
-    if( partida == (( X * Y ) - diamantes))                 
+    if( partida == ( X * Y ) - diamantes)                 
     {
         mensagem_vitoria();
     }
     printf("\nDigite o valor x espaço e o valor de y:");
     scanf("%d %d", &x, &y);                                 
-    FLUSH;
-    if( (x >= X) || (x < 0) || (y < 0) || (y >= N) )
+    if( (x >= X) || (x < 0) || (y < 0) || (y >= Y) )
     {
         printf("\nDigite um valor dentro da mina\n");
         posicao ();
@@ -886,7 +879,8 @@ void De_novo(void)
         escolha();
     }
     else{
-        printf("Obrigado por jogar"\n);
+        printf("Obrigado por jogar\n");
+        
     }
 }
 
