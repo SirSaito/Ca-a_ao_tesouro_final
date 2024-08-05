@@ -70,8 +70,8 @@ void regras(void) {
     printf("\t As jogadas devem ser intercaladas entre os jogadores. São 36 jogadas possíveis, um múltiplo perfeito\n");
     printf("para que 2, 3 ou 4 jogadores tenham 18, 12 ou 9 jogadas, respectivamente.\n");
     printf("Em cada quadro da mina, pode existir um diamante com um número aleatório de quilates.\n");
-    printf("Na mina, existem armadilhas e pistas. Distribua aleatoriamente pistas (em 5% dos quadros) e dois\n");
-    printf("tipos diferentes de armadilha (10% dos quadros), como por exemplo:\n");
+    printf("Na mina, existem armadilhas e pistas. Distribua aleatoriamente pistas (em 5 porcento dos quadros) e dois\n");
+    printf("tipos diferentes de armadilha (10 porcento dos quadros), como por exemplo:\n");
     printf("○ Túneis sem saída (identificados por O): ao sair do túnel, o jogador perde 5 ou 10 de seus diamantes;\n");
     printf("○ Esconderijo secreto (identificados por -): o jogador fica invisível e desconta 5 quilates do(s)\n");
     printf("oponente(s);\n");
@@ -104,32 +104,32 @@ void escolha(void){
 void nome(void) {
     printf("\tDigite o nome do jogador 01: ");
     fflush(stdin);
-    scanf("%c", &nome1);
+    scanf("%s", nome1);
     printf("\tDigite o nome do jogador 02: ");
     fflush(stdin);
-    scanf("%c", &nome2);
+    scanf("%s", nome2);
     if (n == 2) {
         dificuldade();
     } else if (n == 3) {
         printf("\tDigite o nome do jogador 03: ");
         fflush(stdin);
-        scanf("%c", &nome3);
+        scanf("%s", nome3);
         dificuldade();
     } else if (n == 4) {
         printf("\tDigite o nome do jogador 03: ");
         fflush(stdin);
-        scanf("%c", &nome3);
+        scanf("%s", nome3);
         printf("\tDigite o nome do jogador 04: ");
         fflush(stdin);
-        scanf("%c", &nome4);
+        scanf("%s", nome4);
         dificuldade();
     }
 }
 
 void dificuldade(void){
-    printf("\tNivel facil: 36 quadros, taxa de 90% de diamantes 5% de minas e 5% de pistas, não pussui timer\n");
-    printf("\tNivel medio: 81 quadros, taxa de 80% de diamantes e 10% de minas e 10% de pistas, possui um timer\n");
-    printf("\tNivel dificil: 144 quadros, taxa de 70% de diamantes e 20% de minas e 10% de pistas, possui um timer\n")
+    printf("\tNivel facil: 36 quadros, taxa de 90 porcento de diamantes 5 porcento de minas e 5 porcento de pistas, não pussui timer\n");
+    printf("\tNivel medio: 81 quadros, taxa de 80 porcento de diamantes e 10 porcento de minas e 10 porcento de pistas, possui um timer\n");
+    printf("\tNivel dificil: 144 quadros, taxa de 70 porcento de diamantes e 20 porcento de minas e 10 porcento de pistas, possui um timer\n");
     printf("\t\tEscolha o nivel de dificuldade, 1 para facil, 2 para medio e 3 para dificil: \n");
     scanf("%c", &c);
      switch(c){
@@ -187,59 +187,59 @@ void dificil(void){
 }
 
 void ordem(void){
-    if(num_jog=2){
+    if(num_jog==2){
         
         if (t==0){
-        printf("Vez do jogador: %c" nome1);
+        printf("Vez do jogador: %s", nome1);
         t=1;
         posicao();
         }
         if(t==2){
         t++;
         if (t==2){
-        printf("Vez do jogador: %c" nome2);
+        printf("Vez do jogador: %s", nome2);
         t=2;
         posicao();
         }
         }
     }
-    if(num_jog=3){
+    if(num_jog==3){
         if (t!=1){
-        printf("Vez do jogador: %c" nome1);
+        printf("Vez do jogador: %s", nome1);
         t=1;
         posicao();
         }
         if (t!=2){
-        printf("Vez do jogador: %c" nome2);
+        printf("Vez do jogador: %s", nome2);
         t=2;
         posicao();
         }
         if (t!=3){
-        printf("Vez do jogador: %c" nome3);
+        printf("Vez do jogador: %s", nome3);
         t=3;
         posicao();
         }
 
         
     }
-    if(num_jog=4){
+    if(num_jog==4){
         if (t!=1){
-        printf("Vez do jogador: %c" nome1);
+        printf("Vez do jogador: %s", nome1);
         t=1;
         posicao();
         }
         if (t!=2){
-        printf("Vez do jogador: %c" nome2);
+        printf("Vez do jogador: %s", nome2);
         t=2;
         posicao();
         }
         if (t!=3){
-        printf("Vez do jogador: %c" nome3);
+        printf("Vez do jogador: %s", nome3);
         t=3;
         posicao();
         }
         if (t!=4){
-        printf("Vez do jogador: %c" nome4);
+        printf("Vez do jogador: %s", nome4);
         t=4;
         posicao();
         }
@@ -771,7 +771,7 @@ void grid(void){
 }
 
 void posicao (void){
-    int q = 0, i=0, j=0, partida=0;
+    int i=0, j=0, partida=0;
     grid2();
     while( j < X )                                          
     {
