@@ -31,9 +31,9 @@ void mensagem_pista1(void);
 void mensagem_pista2(void);
 void De_novo(void);
 
-int x, y, n, t, q, i, j, k;
+int x, y, n, t, q, i, j, k, c;
 int X, Y;
-char denovo, c;
+char denovo;
 float diff;
 int n;
 int Tempo = 0;
@@ -131,7 +131,8 @@ void dificuldade(void){
     printf("\tNivel medio: 81 quadros, taxa de 80 porcento de diamantes e 10 porcento de minas e 10 porcento de pistas, possui um timer\n");
     printf("\tNivel dificil: 144 quadros, taxa de 70 porcento de diamantes e 20 porcento de minas e 10 porcento de pistas, possui um timer\n");
     printf("\t\tEscolha o nivel de dificuldade, 1 para facil, 2 para medio e 3 para dificil: \n");
-    scanf("%c", &c);
+    fflush(stdin);
+    scanf("%d", &c);
      switch(c){
         case 1:printf("\t\tSELECIONADO: Nivel Facil.\n");
         printf("\tVocês são exploradores que infelizmente ficaram presos em uma caverna, coletem o maximo de pontos para escapar \n");
